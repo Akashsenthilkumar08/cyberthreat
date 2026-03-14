@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CyberGuard Agent — Live Dashboard</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="app">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">&#9632; CYBER<span>GUARD</span></div>
+      <div class="tagline">Autonomous Threat Detection Agent</div>
+    </div>
+    <div class="header-right">
+      <div class="status-pill" id="status-pill">
+        <span class="pulse-dot"></span>
+        <span id="status-text">MONITORING ACTIVE</span>
+      </div>
+      <div class="utc-time" id="utc-time"></div>
+    </div>
+  </header>
+
+  <!-- Metric Cards -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Events Analyzed</div>
+      <div class="metric-value" id="m-total">0</div>
+    </div>
+    <div class="metric-card red">
+      <div class="metric-label">Threats Detected</div>
+      <div class="metric-value" id="m-threats">0</div>
+    </div>
+    <div class="metric-card green">
+      <div class="metric-label">Threats Blocked</div>
+      <div class="metric-value" id="m-blocked">0</div>
+    </div>
+    <div class="metric-card amber">
+      <div class="metric-label">Critical Events</div>
+      <div class="metric-value" id="m-critical">0</div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-grid">
+
+    <!-- Event Feed -->
+    <div class="panel feed-panel">
+      <div class="panel-header">
+        <span>&#9632; LIVE EVENT STREAM</span>
+        <span class="event-count" id="event-count">0 events</span>
+      </div>
+      <div class="feed-header-row">
+        <span>TIME</span>
+        <span>SEVERITY</span>
+        <span>THREAT TYPE</span>
+        <span>SOURCE IP</span>
+        <span>ACTION</span>
+      </div>
+      <div class="feed" id="feed">
+        <div class="empty-feed">Waiting for events...</div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Severity Breakdown -->
+      <div class="panel">
+        <div class="panel-header"><span>Threat Distribution</span></div>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-label">Critical</span>
+            <div class="bar-bg"><div class="bar-fill red" id="bar-critical" style="width:0%"></div></div>
+            <span class="bar-count" id="cnt-critical">0</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">High</span>
+            <div class="bar-bg"><div class="bar-fill amber" id="bar-high" style="width:0%"></div></div>
+            <span class="bar-count" id="cnt-high">0</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Medium</span>
+            <div class="bar-bg"><div class="bar-fill blue" id="bar-medium" style="width:0%"></div></div>
+            <span class="bar-count" id="cnt-medium">0</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Low</span>
+            <div class="bar-bg"><div class="bar-fill green" id="bar-low" style="width:0%"></div></div>
+            <span class="bar-count" id="cnt-low">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blocked IPs -->
+      <div class="panel">
+        <div class="panel-header"><span>&#128683; Blocked IPs</span></div>
+        <div id="blocked-list" class="blocked-list">
+          <div class="empty-text">No IPs blocked yet</div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="panel">
+        <div class="panel-header"><span>Quick Actions</span></div>
+        <button class="action-btn" onclick="downloadReport()">&#9632; Generate Report</button>
+        <button class="action-btn" onclick="clearFeed()">&#9249; Clear Feed</button>
+      </div>
+
+      <!-- Team -->
+      <div class="panel team-panel">
+        <div class="panel-header"><span>Team</span></div>
+        <div class="team-member leader">
+          <span class="initials cyan">AS</span>
+          <div><div class="member-name">Akash S</div><div class="member-role">Team Leader</div></div>
+        </div>
+        <div class="team-member">
+          <span class="initials purple">PK</span>
+          <div><div class="member-name">Preethika K R</div><div class="member-role">ML Engineer</div></div>
+        </div>
+        <div class="team-member">
+          <span class="initials amber">RM</span>
+          <div><div class="member-name">Ragul M</div><div class="member-role">Backend Dev</div></div>
+        </div>
+        <div class="team-member">
+          <span class="initials green">DM</span>
+          <div><div class="member-name">Deerandaran M</div><div class="member-role">Frontend Dev</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
